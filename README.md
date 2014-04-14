@@ -7,7 +7,7 @@ Makes properties of geojson features numeric
          ↓     ↓    ↓    ↓    ↓    ↓    ↓    
     … "properties": { "population": 265778 } …
 
-[![Build Status](https://secure.travis-ci.org/tyrasd/geojson-numeric.png)](https://travis-ci.org/tyrasd/togpx)
+[![Build Status](https://secure.travis-ci.org/tyrasd/geojson-numeric.png)](https://travis-ci.org/tyrasd/geojson-numeric)
 
 Usage
 -----
