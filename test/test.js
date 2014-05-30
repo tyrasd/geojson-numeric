@@ -46,6 +46,7 @@ test('does convert numeric properties', function (t) {
       },
       "properties": {
         "foo": "bar",
+        "array": [1],
         "int": "123",
         "float": "-1.23"
       }
@@ -53,6 +54,7 @@ test('does convert numeric properties', function (t) {
   };
   var result = numerify(geojson);
   t.equal(geojson.features[0].properties.foo, "bar");
+  t.deepEqual(geojson.features[0].properties.array, [1]);
   t.equal(geojson.features[0].properties.int, 123);
   t.equal(geojson.features[0].properties.float, -1.23);
   t.end();

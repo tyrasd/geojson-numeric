@@ -1,7 +1,7 @@
 function numeric( geojson ) {
   
   function isNumeric(n) {
-    return !isNaN(parseFloat(n)) && isFinite(n);
+    return !Array.isArray(n) && !isNaN(parseFloat(n)) && isFinite(n);
   }
 
   var features;
