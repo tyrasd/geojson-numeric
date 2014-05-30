@@ -1,6 +1,6 @@
 {
   "name": "geojson-numeric",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Makes properties of geojson features numeric.",
   "main": "index.js",
   "scripts": {
