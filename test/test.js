@@ -60,3 +60,33 @@ test('does convert numeric properties', function (t) {
   t.end();
 });
 
+test('recursive', function (t) {
+  var geojson = {
+    "type": "FeatureCollection",
+    "features": [{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [0,0]
+      },
+      "properties": {
+        "tags": {
+          "asd": "fasd",
+          "num": "123",
+        },
+        "array": [
+          "str",
+          "1.23"
+        ]
+      }
+    }]
+  };
+  var result = numerify(geojson,true);
+  t.equal(geojson.features[0].properties.tags.asd, "fasd");
+  t.equal(geojson.features[0].properties.tags.num, 123);
+  t.equal(geojson.features[0].properties.array.length, 2);
+  t.equal(geojson.features[0].properties.array[0], "str");
+  t.equal(geojson.features[0].properties.array[1], 1.23);
+  t.end();
+});
+

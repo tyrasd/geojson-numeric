@@ -3,6 +3,7 @@
 var numerify = require('./'),
     opt = require('optimist')
         .usage('Usage: $0 FILE')
+        .boolean('r').describe('r', 'recursive. Will recusively walk through nested objects and arrays')
         .boolean('version').describe('version','display software version')
         .boolean('help').describe('help','print this help message'),
     argv = opt.argv,
@@ -24,7 +25,8 @@ function convert(data) {
     process.stdout.write(
         JSON.stringify(
             numerify(
-                JSON.parse(data)
+                JSON.parse(data),
+                argv.r
             ),
             null, 2
         )

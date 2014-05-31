@@ -1,4 +1,4 @@
-function numeric( geojson ) {
+function numeric( geojson, recursive ) {
   
   function isNumeric(n) {
     return !Array.isArray(n) && !isNaN(parseFloat(n)) && isFinite(n);
@@ -12,11 +12,16 @@ function numeric( geojson ) {
   else
     features = [{type:"Feature", properties: {}, geometry: geojson}];
 
-  features.forEach(function mapFeature(f) {
-    for (var key in f.properties) {
-      if (isNumeric(f.properties[key]))
-        f.properties[key] = parseFloat(f.properties[key]);
+  function toNumeric(obj) {
+    for (var key in obj) {
+      if (isNumeric(obj[key]))
+        obj[key] = parseFloat(obj[key]);
+      else if (recursive && typeof obj[key] === "object")
+        toNumeric(obj[key]);
     }
+  }
+  features.forEach(function mapFeature(f) {
+    toNumeric(f.properties);
   });
 
   return geojson;
